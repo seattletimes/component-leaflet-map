@@ -1,0 +1,5 @@
+node_modules/
+build/
+temp/
+src/lib/
+auth.json

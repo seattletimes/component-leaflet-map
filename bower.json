@@ -1,0 +1,20 @@
+{
+  "name": "component-leaflet-map",
+  "version": "0.0.1",
+  "homepage": "https://github.com/seattletimes/component-leaflet-map",
+  "authors": [
+    "The Seattle Times"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "document-register-element": "~0.1.6"
+  }
+}
