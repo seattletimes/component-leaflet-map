@@ -1,11 +1,16 @@
 var L = require("leaflet");
+var tilesets = require("./tiles");
 
 //bind all tag parsers to the config object before calling
 var parsers = {
   "tile-layer": function(element) {
     this.tiles.push({
       layer: element.getAttribute("layer"),
-      url: element.getAttribute("url")
+      url: element.getAttribute("url"),
+      options: {
+        subdomains: element.getAttribute("subdomains"),
+        opacity: element.getAttribute("opacity") || 1
+      }
     });
   }
 };
@@ -22,5 +27,20 @@ module.exports = function(element) {
     var parser = parsers[selector].bind(config);
     elements.forEach(parser);
   }
+  if (!config.tiles.length) {
+    config.tiles = [{ layer: "toner" }];
+  }
+  config.tiles = config.tiles.map(function(setup) {
+    if (setup.layer && setup.layer in tilesets) {
+      //discard and create one from the layer
+      var tileset = tilesets[setup.layer];
+      setup.url = tileset.url;
+      for (var original in tileset.options) {
+        if (!setup.options[original]) setup.options[original] = tileset.options[original];
+      }
+    }
+    if (!setup.url) return undefined;
+    return L.tileLayer(setup.url, setup.options);
+  });
   return config;
 };

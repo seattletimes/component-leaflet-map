@@ -11,8 +11,8 @@ var proto = Object.create(HTMLElement.prototype);
 
 proto.createdCallback = function() {
   var config = configParser(this);
-  console.log(config);
   this.innerHTML = "";
+
   var options = {};
   if (this.hasAttribute("lat")) {
     options.center = [this.getAttribute("lat"), this.getAttribute("lng")];
@@ -24,17 +24,12 @@ proto.createdCallback = function() {
   } else {
     options.zoom = 7;
   }
-  this.map = L.map(this, options);
+  var map = this.map = L.map(this, options);
 
-  //replace this
-  var tiles = L.tileLayer(
-    "http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png",
-    {
-      subdomains: "abcd".split(""),
-      scheme: "xyz"
-    }
-  );
-  tiles.addTo(this.map);
+  //add layers
+  config.tiles.forEach(function(tile) {
+    tile.addTo(map);
+  });
 };
 proto.leaflet = L;
 
