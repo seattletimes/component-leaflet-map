@@ -27,7 +27,7 @@ module.exports = function(grunt) {
 
       var outStream = fs.createWriteStream(output);
 
-      var b = browserify({ debug: true });
+      var b = browserify({ debug: true, standalone: "leaflet-map" });
 
       b.add("./src/" + file);
       b.bundle().pipe(exorcist(output + ".map")).pipe(outStream).on("finish", function() {

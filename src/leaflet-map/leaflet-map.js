@@ -5,7 +5,6 @@ var configParser = require("./config-parser");
 
 //styles
 require("./leaflet-map.less");
-require("../../node_modules/leaflet/dist/leaflet.css");
 
 var proto = Object.create(HTMLElement.prototype);
 
