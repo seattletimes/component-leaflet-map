@@ -29,6 +29,20 @@ proto.createdCallback = function() {
   config.tiles.forEach(function(tile) {
     tile.addTo(map);
   });
+
+  config.markers.forEach(function(poi) {
+    var options = {
+      icon: new L.divIcon({
+        className: poi.class
+      }),
+      title: poi.title
+    };
+    var marker = L.marker(poi.latlng, options);
+    if (poi.html) {
+      marker.bindPopup(poi.html);
+    }
+    marker.addTo(map);
+  });
 };
 proto.leaflet = L;
 

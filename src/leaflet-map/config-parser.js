@@ -12,6 +12,15 @@ var parsers = {
         opacity: element.getAttribute("opacity") || 1
       }
     });
+  },
+  "map-marker": function(element) {
+    this.markers.push({
+      html: element.innerHTML,
+      latlng: [element.getAttribute("lat"), element.getAttribute("lng")].map(Number),
+      style: element.getAttribute("style"),
+      class: element.className,
+      title: element.getAttribute("title")
+    });
   }
 };
 
@@ -20,7 +29,7 @@ module.exports = function(element) {
     tiles: [],
     geojson: [],
     kml: [],
-    poi: []
+    markers: []
   };
   for (var selector in parsers) {
     var elements = Array.prototype.slice.call(element.querySelectorAll(selector));
