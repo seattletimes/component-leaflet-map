@@ -33,7 +33,8 @@ proto.createdCallback = function() {
   config.markers.forEach(function(poi) {
     var options = {
       icon: new L.divIcon({
-        className: poi.class
+        className: poi.class,
+        iconSize: null
       }),
       title: poi.title
     };
