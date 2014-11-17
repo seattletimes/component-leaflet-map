@@ -1,27 +1,12 @@
 var L = require("leaflet");
 var tilesets = require("./tiles");
 
-//bind all tag parsers to the config object before calling
+//All tag parsers have the config bound to this before being called with an
+//element matching their selector
 var parsers = {
-  "tile-layer": function(element) {
-    this.tiles.push({
-      layer: element.getAttribute("layer"),
-      url: element.getAttribute("url"),
-      options: {
-        subdomains: element.getAttribute("subdomains"),
-        opacity: element.getAttribute("opacity") || 1
-      }
-    });
-  },
-  "map-marker": function(element) {
-    this.markers.push({
-      html: element.innerHTML,
-      latlng: [element.getAttribute("lat"), element.getAttribute("lng")].map(Number),
-      style: element.getAttribute("style"),
-      class: element.className,
-      title: element.getAttribute("title")
-    });
-  }
+  "tile-layer": require("./parsers/tile-layer"),
+  "map-marker": require("./parsers/map-marker"),
+  "geo-json": require("./parsers/geo-json")
 };
 
 module.exports = function(element) {

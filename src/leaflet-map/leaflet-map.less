@@ -1,5 +1,10 @@
 @import (inline) "node_modules/leaflet/dist/leaflet.css";
 
+/*
+It's recommended to add the following rule to your stylesheet, in order to prevent FOUC
+leaflet-map[^ready] { display: none }
+*/
+
 leaflet-map {
   * {
     -webkit-box-sizing: border-box;

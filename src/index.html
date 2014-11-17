@@ -2,6 +2,10 @@
 <html>
   <head>
     <style>
+leaflet-map[^ready] {
+  display: none;
+}
+
 .test {
   background: blue;
   border: 1px solid white;
@@ -21,6 +25,9 @@
       <map-marker lat="47" lng="-122" class="test">
 Hello, Seattle!
       </map-marker>
+      <geo-json>
+<%= t.include("states.geo.json") %>
+      </geo-json>
     </leaflet-map>
     <script src="leaflet-map.js"></script>
   </body>

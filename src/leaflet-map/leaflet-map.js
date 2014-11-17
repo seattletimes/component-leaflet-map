@@ -11,6 +11,7 @@ var proto = Object.create(HTMLElement.prototype);
 proto.createdCallback = function() {
   var config = configParser(this);
   this.innerHTML = "";
+  this.setAttribute("ready", "");
 
   var options = {};
   if (this.hasAttribute("lat")) {
@@ -28,6 +29,11 @@ proto.createdCallback = function() {
   //add layers
   config.tiles.forEach(function(tile) {
     tile.addTo(map);
+  });
+
+  config.geojson.forEach(function(json) {
+    var layer = L.geoJson(json.data, json.options);
+    layer.addTo(map);
   });
 
   config.markers.forEach(function(poi) {
