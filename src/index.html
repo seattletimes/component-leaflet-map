@@ -26,7 +26,16 @@ leaflet-map[^ready] {
 Hello, Seattle!
       </map-marker>
       <geo-json>
+        <geo-data>
 <%= t.include("states.geo.json") %>
+        </geo-data>
+        <geo-style>
+{
+  "color": "#808",
+  "stroke": false,
+  "fillOpacity": 0.6
+}
+        </geo-style>
       </geo-json>
     </leaflet-map>
     <script src="leaflet-map.js"></script>

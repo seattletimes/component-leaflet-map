@@ -32,7 +32,7 @@ proto.createdCallback = function() {
   });
 
   config.geojson.forEach(function(json) {
-    var layer = L.geoJson(json.data, json.options);
+    var layer = L.geoJson(json.data, json.style);
     layer.addTo(map);
   });
 
