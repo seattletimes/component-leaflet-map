@@ -16,5 +16,11 @@ module.exports = {
     options: {
       subdomains: "abcd".split("")
     }
+  },
+  terrain: {
+    url: "http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png",
+    options: {
+      subdomains: "abcd".split("")
+    }
   }
 };

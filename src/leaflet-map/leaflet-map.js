@@ -1,5 +1,5 @@
-var template = require("./_template.html");
 require("document-register-element");
+var template = require("./_template.html");
 var L = require("leaflet");
 var configParser = require("./config-parser");
 
