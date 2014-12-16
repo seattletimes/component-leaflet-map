@@ -13,18 +13,21 @@ proto.createdCallback = function() {
   this.innerHTML = "";
   this.setAttribute("ready", "");
 
-  var options = {};
   if (this.hasAttribute("lat")) {
-    options.center = [this.getAttribute("lat"), this.getAttribute("lng")];
+    config.options.center = [this.getAttribute("lat"), this.getAttribute("lng")];
   } else {
-    options.center = [47.609, -122.333];
+    config.options.center = [47.609, -122.333];
   }
-  if (this.hasAttribute("zoom")) {
-    options.zoom = this.getAttribute("zoom") * 1;
-  } else {
-    options.zoom = 7;
+  if (this.hasAttribute("fixed")) {
+    config.options.boxZoom = false;
+    config.options.doubleClickZoom = false;
+    config.options.dragging = false;
+    config.options.keyboard = false;
+    config.options.scrollWheelZoom = false;
+    config.options.touchZoom = false;
+    config.options.zoomControl = false;
   }
-  var map = this.map = L.map(this, options);
+  var map = this.map = L.map(this, config.options);
 
   //add layers
   config.tiles.forEach(function(tile) {

@@ -6,7 +6,8 @@ var tilesets = require("./tiles");
 var parsers = {
   "tile-layer": require("./parsers/tile-layer"),
   "map-marker": require("./parsers/map-marker"),
-  "geo-json": require("./parsers/geo-json")
+  "geo-json": require("./parsers/geo-json"),
+  "map-options": require("./parsers/map-options")
 };
 
 module.exports = function(element) {
@@ -14,7 +15,8 @@ module.exports = function(element) {
     tiles: [],
     geojson: [],
     kml: [],
-    markers: []
+    markers: [],
+    options: {}
   };
   for (var selector in parsers) {
     var elements = Array.prototype.slice.call(element.querySelectorAll(selector));
@@ -25,6 +27,7 @@ module.exports = function(element) {
     config.tiles = [{ layer: "toner" }];
   }
   config.tiles = config.tiles.map(function(setup) {
+    setup.options = setup.options || {};
     if (setup.layer && setup.layer in tilesets) {
       //discard and create one from the layer
       var tileset = tilesets[setup.layer];
