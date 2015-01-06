@@ -13,20 +13,6 @@ proto.createdCallback = function() {
   this.innerHTML = "";
   this.setAttribute("ready", "");
 
-  if (this.hasAttribute("lat")) {
-    config.options.center = [this.getAttribute("lat"), this.getAttribute("lng")];
-  } else {
-    config.options.center = [47.609, -122.333];
-  }
-  if (this.hasAttribute("fixed")) {
-    config.options.boxZoom = false;
-    config.options.doubleClickZoom = false;
-    config.options.dragging = false;
-    config.options.keyboard = false;
-    config.options.scrollWheelZoom = false;
-    config.options.touchZoom = false;
-    config.options.zoomControl = false;
-  }
   var map = this.map = L.map(this, config.options);
 
   //add layers
