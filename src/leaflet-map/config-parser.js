@@ -1,6 +1,3 @@
-var L = require("leaflet");
-var tilesets = require("./tiles");
-
 //All tag parsers have the config bound to this before being called with an
 //element matching their selector
 var parsers = {
@@ -24,24 +21,7 @@ module.exports = function(element) {
     var parser = parsers[selector].bind(config);
     elements.forEach(parser);
   }
-  //if no tiles, set the toner
-  if (!config.tiles.length) {
-    config.tiles = [{ layer: "toner" }];
-  }
-  //convert tiles into layers
-  config.tiles = config.tiles.map(function(setup) {
-    setup.options = setup.options || {};
-    if (setup.layer && setup.layer in tilesets) {
-      //discard and create one from the layer
-      var tileset = tilesets[setup.layer];
-      setup.url = tileset.url;
-      for (var original in tileset.options) {
-        if (!setup.options[original]) setup.options[original] = tileset.options[original];
-      }
-    }
-    if (!setup.url) return undefined;
-    return L.tileLayer(setup.url, setup.options);
-  });
+
   //handle options on the element itself
   if (element.hasAttribute("lat")) {
     config.options.center = [element.getAttribute("lat"), element.getAttribute("lng")];
