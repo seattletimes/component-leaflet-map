@@ -6,7 +6,19 @@ A custom element for instantiating Leaflet maps and feeding them data. When fini
     <leaflet-map lat="47" lng="-122" zoom=5>
       <tile-layer layer="stamen-toner"></tile-layer>
       <map-marker lat="23" lng="-80">Popup text!</map-marker>
-      <geo-json src="area.geo.json" style='{ "color": "blue", "weight": 0 }'></geo-json>
+      <geo-json>
+        <geo-data>GEOJSON DATA GOES HERE</geo-data>
+        <geo-palette on="FEATURE_PROPERTY">
+          <color-mapping max=128 color="red"></color-mapping>
+          <color-mapping min=129 max=255 color="blue"></color-mapping>
+        </geo-palette>
+        <geo-style>
+{ "stroke": false, fillOpacity: .6 }
+        </geo-style>
+        <geo-popup>
+I'm templated, with values from {{FEATURE_PROPERTY}} injected automatically!
+        </geo-popup>
+      </geo-json>
     </leaflet-map>
 
 ``<leaflet-map>`` is built on top of our `component template <https://github.com/seattletimes/component-template>`__.
