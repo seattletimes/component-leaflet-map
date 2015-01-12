@@ -66,9 +66,23 @@ module.exports = function(element) {
       }
     }
 
+    var popup = element.querySelector("geo-popup");
+    if (popup) {
+      var template = popup.innerHTML;
+      popup = function(feature, layer) {
+        var html = template;
+        for (var key in feature.properties) {
+          var val = feature.properties[key];
+          html = html.split("{{" + key + "}}").join(val);
+        }
+        layer.bindPopup(html);
+      };
+    }
+
     this.geojson.push({
       data: data,
-      style: style
+      style: style,
+      eachFeature: popup
     });
   }
 };
