@@ -13,26 +13,62 @@ module.exports = function(element) {
     };
     this.geojson.push(json);
   } else {
+
     var data = element.querySelector("geo-data");
     try {
       data = JSON.parse(data.innerHTML);
     } catch(e) {
-      console.log("Incorrect or missing geo-data element");
+      console.error("Incorrect or missing geo-data element");
       return;
     }
+    
     var style = element.querySelector("geo-style");
-    try {
-      style = JSON.parse(style.innerHTML);
-    } catch(e) {
-      console.log("Incorrect or missing geo-style element");
-      return;
+    if (style) {
+      try {
+        style = JSON.parse(style.innerHTML);
+      } catch(e) {
+        console.error("Incorrect or missing geo-style element");
+        return;
+      }
     }
+
+    var palette = element.querySelector("geo-palette");
+    if (palette) {
+      try {
+        var prop = palette.getAttribute("property");
+        var mappings = palette.querySelectorAll("color-mapping");
+        var map = {};
+        var baseStyle = style || {};
+        for (var i = 0; i < mappings.length; i++) {
+          var mapping = mappings[i];
+          var min = mapping.getAttribute("min") || -Infinity;
+          var max = mapping.getAttribute("max") || Infinity;
+          var color = mapping.getAttribute("color") || "pink";
+          map[color] = { min: min * 1, max: max * 1 };
+        }
+        style = function(feature) {
+          var value = feature.properties[prop];
+          var styleCopy = {};
+          for (var s in baseStyle) {
+            styleCopy[s] = baseStyle[s];
+          }
+          for (var color in map) {
+            var range = map[color];
+            if (value >= range.min && value <= range.max) {
+              styleCopy.color = color;
+            }
+          }
+          return styleCopy;
+        };
+      } catch(e) {
+        console.error("Incorrect or missing geo-palette element");
+        return;
+      }
+    }
+
     this.geojson.push({
       data: data,
       style: style
     });
-    //this has child config options, parse through that tree
-    //<geo-data> - actual JSON data
-    //<geo-style> - style object to be passed to the geoJson constructor
   }
 };

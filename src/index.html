@@ -36,11 +36,16 @@ Hello, Seattle!
         </geo-data>
         <geo-style>
 {
-  "color": "#808",
   "stroke": false,
   "fillOpacity": 0.6
 }
         </geo-style>
+        <geo-palette property="CENSUSAREA">
+          <color-mapping max=4999 color="blue"></color-mapping>
+          <color-mapping min=5000 max=24999 color="green"></color-mapping>
+          <color-mapping min=25000 max=99999 color="yellow"></color-mapping>
+          <color-mapping min=100000 color="orange"></color-mapping>
+        </geo-palette>
       </geo-json>
     </leaflet-map>
     <script src="leaflet-map.js"></script>
