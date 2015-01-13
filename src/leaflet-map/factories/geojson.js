@@ -5,7 +5,25 @@ module.exports = function(map, config) {
     var config = {};
     if (json.style) config.style = json.style;
     if (json.eachFeature) config.onEachFeature = json.eachFeature;
-    var layer = L.geoJson(json.data, config);
-    layer.addTo(map);
+    if (json.src) {
+      //get the data over AJAX
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", json.src);
+      xhr.onload = function() {
+        var response = xhr.responseText;
+        var data;
+        try {
+          data = JSON.parse(response);
+          var layer = L.geoJson(data, config);
+          layer.addTo(map);
+        } catch (e) {
+          console.error("Unable to parse GeoJSON from " + json.src);
+        }
+      };
+      xhr.send();
+    } else {
+      var layer = L.geoJson(json.data, config);
+      layer.addTo(map);  
+    }
   });
 };

@@ -14,12 +14,16 @@ module.exports = function(element) {
     this.geojson.push(json);
   } else {
 
+    var url = element.getAttribute("src");
+
     var data = element.querySelector("geo-data");
-    try {
-      data = JSON.parse(data.innerHTML);
-    } catch(e) {
-      console.error("Incorrect or missing geo-data element");
-      return;
+    if (data) {
+      try {
+        data = JSON.parse(data.innerHTML);
+      } catch(e) {
+        console.error("Incorrect or missing geo-data element");
+        return;
+      }
     }
     
     var style = element.querySelector("geo-style");
@@ -80,6 +84,7 @@ module.exports = function(element) {
     }
 
     this.geojson.push({
+      src: url,
       data: data,
       style: style,
       eachFeature: popup

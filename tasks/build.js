@@ -5,6 +5,7 @@ Build HTML files using any data loaded onto the shared state.
 */
 
 var path = require("path");
+var shell = require("shelljs");
 
 module.exports = function(grunt) {
 
@@ -23,6 +24,9 @@ module.exports = function(grunt) {
       var output = grunt.template.process(input, { data: data });
       grunt.file.write(file.dest, output);
     });
+
+    //also copy our sole data file over for testing
+    shell.cp("src/states.geo.json", "build");
   });
 
 };
