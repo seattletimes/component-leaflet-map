@@ -23,7 +23,7 @@ module.exports = function(map, config) {
       xhr.send();
     } else {
       var layer = L.geoJson(json.data, config);
-      layer.addTo(map);  
+      layer.addTo(map);
     }
   });
 };

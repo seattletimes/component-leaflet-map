@@ -74,6 +74,7 @@ module.exports = function(element) {
     if (popup) {
       var template = popup.innerHTML;
       popup = function(feature, layer) {
+        //WORLD'S WORST TEMPLATING
         var html = template;
         for (var key in feature.properties) {
           var val = feature.properties[key];

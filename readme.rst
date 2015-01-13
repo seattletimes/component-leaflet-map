@@ -6,20 +6,22 @@ A custom element for instantiating Leaflet maps and feeding them data. When fini
     <leaflet-map lat="47" lng="-122" zoom=5>
       <tile-layer layer="stamen-toner"></tile-layer>
       <map-marker lat="23" lng="-80">Popup text!</map-marker>
-      <geo-json>
-        <geo-data>GEOJSON DATA GOES HERE</geo-data>
+      <geo-json src="url.geojson">
+        <geo-data>OR GEOJSON DATA GOES HERE</geo-data>
         <geo-palette on="FEATURE_PROPERTY">
           <color-mapping max=128 color="red"></color-mapping>
           <color-mapping min=129 max=255 color="blue"></color-mapping>
         </geo-palette>
         <geo-style>
-{ "stroke": false, fillOpacity: .6 }
+{ "stroke": false, "fillOpacity": .6 }
         </geo-style>
         <geo-popup>
 I'm templated, with values from {{FEATURE_PROPERTY}} injected automatically!
         </geo-popup>
       </geo-json>
     </leaflet-map>
+
+GeoJSON represents the most significant portion of ``<leaflet-map>`` development, with the ability to automatically color and bind popups to the vector layer. The templating for popups is extremely primitive and only supports direct string value substitution (no loops, no expressions, no formatters), but this covers most of the required cases and provides predictable results for users. More advanced users will probably want to go through the ``map`` and ``leaflet`` properties exposed on the element anyway.
 
 ``<leaflet-map>`` is built on top of our `component template <https://github.com/seattletimes/component-template>`__.
 
