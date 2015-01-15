@@ -13,10 +13,10 @@ A custom element for instantiating Leaflet maps and feeding them data. When fini
           <color-mapping min=129 max=255 color="blue"></color-mapping>
         </geo-palette>
         <geo-style>
-{ "stroke": false, "fillOpacity": .6 }
+  { "stroke": false, "fillOpacity": .6 }
         </geo-style>
         <geo-popup>
-I'm templated, with values from {{FEATURE_PROPERTY}} injected automatically!
+  I'm templated, with values from {{FEATURE_PROPERTY}} injected automatically!
         </geo-popup>
       </geo-json>
     </leaflet-map>
