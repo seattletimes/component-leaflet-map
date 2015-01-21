@@ -44,12 +44,12 @@ module.exports = {
   },
   // ESRI
   esriStreets: {
-    "url": "//{s}.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
-    "options": {
-      "minZoom": 1,
-      "maxZoom": 19,
-      "subdomains": ["server", "services"],
-      "attribution": "<a href=\"https://static.arcgis.com/attribution/World_Street_Map\">Esri</a>"
+    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 19,
+      subdomains: ["server", "services"],
+      attribution: "<a href=\"https://static.arcgis.com/attribution/World_Street_Map\">Esri</a>"
     }
   },
   esriTopographic: {
