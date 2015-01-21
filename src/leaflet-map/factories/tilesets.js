@@ -6,6 +6,7 @@ var stamenAttrib = [
 ].join("");
 
 module.exports = {
+  // STAMEN
   lite: {
     url: "http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png",
     options: {
@@ -39,6 +40,144 @@ module.exports = {
     options: {
       subdomains: "abcd",
       attribution: stamenAttrib
+    }
+  },
+  // ESRI
+  esriStreets: {
+    "url": "//{s}.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+    "options": {
+      "minZoom": 1,
+      "maxZoom": 19,
+      "subdomains": ["server", "services"],
+      "attribution": "<a href=\"https://static.arcgis.com/attribution/World_Street_Map\">Esri</a>"
+    }
+  },
+  esriTopographic: {
+    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 19,
+      subdomains: ["server", "services"],
+      attribution: "<a href=\"https://static.arcgis.com/attribution/World_Topo_Map\">Esri</a>"
+    }
+  },
+  esriOceans: {
+    url: "//{s}.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 16,
+      subdomains: ["server", "services"],
+      attribution: "<a href=\"https://static.arcgis.com/attribution/Ocean_Basemap\">Esri</a>"
+    }
+  },
+  esriOceansLabels: {
+    url: "//{s}.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Reference/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 16,
+      subdomains: ["server", "services"]
+    }
+  },
+  esriNationalGeographic: {
+    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 16,
+      subdomains: ["server", "services"],
+      attribution: "Esri"
+    }
+  },
+  esriDarkGray: {
+    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 16,
+      subdomains: ["server", "services"],
+      attribution: "Esri, DeLorme, HERE"
+    }
+  },
+  esriDarkGrayLabels: {
+    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 16,
+      subdomains: ["server", "services"]
+    }
+  },
+  esriGray: {
+    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 16,
+      subdomains: ["server", "services"],
+      attribution: "Esri, NAVTEQ, DeLorme"
+    }
+  },
+  esriGrayLabels: {
+    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 16,
+      subdomains: ["server", "services"]
+    }
+  },
+  esriImagery: {
+    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 19,
+      subdomains: ["server", "services"],
+      attribution: "Esri, DigitalGlobe, GeoEye, i-cubed, USDA, USGS, AEX, Getmapping, Aerogrid, IGN, IGP, swisstopo, and the GIS User Community"
+    }
+  },
+  esriImageryLabels: {
+    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 19,
+      subdomains: ["server", "services"]
+    }
+  },
+  esriImageryTransportation: {
+    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 19,
+      subdomains: ["server", "services"]
+    }
+  },
+  esriShadedRelief: {
+    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 13,
+      subdomains: ["server", "services"],
+      attribution: "ESRI, NAVTEQ, DeLorme"
+    }
+  },
+  esriShadedReliefLabels: {
+    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 12,
+      subdomains: ["server", "services"]
+    }
+  },
+  esriTerrain: {
+    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 13,
+      subdomains: ["server", "services"],
+      attribution: "Esri, USGS, NOAA"
+    }
+  },
+  esriTerrainLabels: {
+    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Reference_Overlay/MapServer/tile/{z}/{y}/{x}",
+    options: {
+      minZoom: 1,
+      maxZoom: 13,
+      subdomains: ["server", "services"]
     }
   }
 };
