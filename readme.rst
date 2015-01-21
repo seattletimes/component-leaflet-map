@@ -82,12 +82,14 @@ Set the position of the map marker using the ``lat`` and ``lng`` attributes. Any
 
 The most complicated element, ``<geo-json>`` uses several sub-elements to load and annotate GeoJSON files. You can provide the GeoJSON directly, using a ``<geo-data>`` element (this is the template's default) or load it via AJAX by specifying a ``src`` attribute on the ``<geo-json>``.
 
-The ``<geo-style>`` element should contain JSON matching Leaflet's `path style options <http://leafletjs.com/reference.html#path>`__. These styles will be overridden/supplemented by any coloring specified in the ``<geo-palette>`` element, which is keyed via the ``property`` attribute to the properties hash on each GeoJSON feature.
+The ``<geo-style>`` element should contain strict JSON matching Leaflet's `path style options <http://leafletjs.com/reference.html#path>`__. These styles will be overridden/supplemented by any coloring specified in the ``<geo-palette>`` element, which is keyed via the ``property`` attribute to the properties hash on each GeoJSON feature.
 
 ``<geo-popup>`` allows you to bind HTML to the GeoJSON layer with some very simple templating, substituting in any property from the feature. Loops, conditionals, and formatting are not supported yet, so make sure your GeoJSON contains properly-formatted data to be used in the popup.
 
 <map-options>
 -------------
+
+In addition to the options exposed as ``<leaflet-map>`` attributes, you can also set the configuration object for the map directly, by providing JSON matching the `Leaflet map options hash <http://leafletjs.com/reference.html#path>`__.
 
 Behind the scenes
 =================
