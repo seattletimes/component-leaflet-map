@@ -25,6 +25,34 @@ GeoJSON represents the most significant portion of ``<leaflet-map>`` development
 
 ``<leaflet-map>`` is built on top of our `component template <https://github.com/seattletimes/component-template>`__.
 
+Tile layers
+-----------
+
+The following tile layers are available through the ``<tile-layer>`` element. Many of the ``esri`` layers come in two parts: one for the background, and one for the labels, which makes it easier to create maps without distracting text details when adding data.
+
+* ``lite`` - Stamen Toner Lite
+* ``background`` - Stamen Toner Background
+* ``toner`` - Stamen Toner
+* ``watercolor`` - Stamen Watercolor
+* ``terrain`` - Stamen Terrain
+* ``esriStreets``
+* ``esriTopographic``
+* ``esriOceans``
+* ``esriOceansLabels``
+* ``esriNationalGeographic``
+* ``esriDarkGray``
+* ``esriDarkGrayLabels``
+* ``esriGray``
+* ``esriGrayLabels``
+* ``esriImagery``
+* ``esriImageryLabels``
+* ``esriImageryTransportation``
+* ``esriShadedRelief``
+* ``esriShadedReliefLabels``
+* ``esriTerrain``
+* ``esriTerrainLabels``
+
+
 How does it work?
 -----------------
 
