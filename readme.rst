@@ -25,10 +25,21 @@ GeoJSON represents the most significant portion of ``<leaflet-map>`` development
 
 ``<leaflet-map>`` is built on top of our `component template <https://github.com/seattletimes/component-template>`__.
 
-Tile layers
------------
+Elements
+========
 
-The following tile layers are available through the ``<tile-layer>`` element. Many of the ``esri`` layers come in two parts: one for the background, and one for the labels, which makes it easier to create maps without distracting text details when adding data.
+The Leaflet map is configured and initialized with a domain-specific language built out of custom tags, on the working assumption that it's easier to write HTML than it is to write JavaScript. The following tags are supported for setting up the map. Once it's initialized, you can access the map itself through the ``map`` property on the ``<leaflet-map>`` element, and you can also get access to Leaflet itself through the ``leaflet`` property.
+
+The ``<leaflet-map>`` element itself exposes several configuration properties via attributes, including:
+
+* ``lat`` and ``lng`` - center the map on the specified coordinate
+* ``zoom``
+* ``fixed`` - disables zoom and pan functionality
+
+<tile-layer>
+------------
+
+Tile layers can be initialized in two ways. You can set them up manually, by providing the ``url`` and ``subdomains`` attributes, or you can set ``layer`` to one of the following values in order to use a preset basemap. Many of the ``esri`` layers come in two parts: one for the background, and one for the labels, which makes it easier to create maps without distracting text details when adding data.
 
 * ``lite`` - Stamen Toner Lite
 * ``background`` - Stamen Toner Background
@@ -52,9 +63,34 @@ The following tile layers are available through the ``<tile-layer>`` element. Ma
 * ``esriTerrain``
 * ``esriTerrainLabels``
 
+``<tile-layer>`` also supports the ``opacity`` attribute, in order to overlay basemaps on top of each other.
 
-How does it work?
------------------
+<map-marker>
+------------
+
+Set the position of the map marker using the ``lat`` and ``lng`` attributes. Any classes on the ``<map-marker>`` element will be set on the resulting Leaflet DivIcon marker. Content inside a ``<map-marker>`` is bound to its popup. This makes these elements combine powerfully with EJS template loops, like so::
+
+    <% data.forEach(function(item) { %>
+      <map-marker lat="<%= item.lat %>" lng="<%= item.lng %>">
+        <h1><%= item.title %></h1>
+        <p><%= item.description %>
+      </map-marker>
+    <% }); %>
+
+<geo-json>
+----------
+
+The most complicated element, ``<geo-json>`` uses several sub-elements to load and annotate GeoJSON files. You can provide the GeoJSON directly, using a ``<geo-data>`` element (this is the template's default) or load it via AJAX by specifying a ``src`` attribute on the ``<geo-json>``.
+
+The ``<geo-style>`` element should contain JSON matching Leaflet's `path style options <http://leafletjs.com/reference.html#path>`__. These styles will be overridden/supplemented by any coloring specified in the ``<geo-palette>`` element, which is keyed via the ``property`` attribute to the properties hash on each GeoJSON feature.
+
+``<geo-popup>`` allows you to bind HTML to the GeoJSON layer with some very simple templating, substituting in any property from the feature. Loops, conditionals, and formatting are not supported yet, so make sure your GeoJSON contains properly-formatted data to be used in the popup.
+
+<map-options>
+-------------
+
+Behind the scenes
+=================
 
 The element breaks down its startup process into two parts, both of which take place during the custom element's ``createdCallback``.
 
