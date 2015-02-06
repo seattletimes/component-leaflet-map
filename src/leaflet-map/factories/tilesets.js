@@ -5,6 +5,8 @@ var stamenAttrib = [
   'under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.'
 ].join("");
 
+var cartoAttrib = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
+
 module.exports = {
   // STAMEN
   lite: {
@@ -178,6 +180,35 @@ module.exports = {
       minZoom: 1,
       maxZoom: 13,
       subdomains: ["server", "services"]
+    }
+  },
+  // CARTODB
+  cartoPositron: {
+    url: "http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+    options: {
+      subdomains: "abc",
+      attribution: cartoAttrib
+    }
+  },
+  cartoPositronBlank: {
+    url: "http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
+    options: {
+      subdomains: "abc",
+      attribution: cartoAttrib
+    }
+  },
+  cartoDarkMatter: {
+    url: "http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+    options: {
+      subdomains: "abc",
+      attribution: cartoAttrib
+    }
+  },
+  cartoDarkMatterBlank: {
+    url: "http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+    options: {
+      subdomains: "abc",
+      attribution: cartoAttrib
     }
   }
 };

@@ -62,6 +62,10 @@ Tile layers can be initialized in two ways. You can set them up manually, by pro
 * ``esriShadedReliefLabels``
 * ``esriTerrain``
 * ``esriTerrainLabels``
+* ``cartoPositron``
+* ``cartoPositronBlank`` - No labels
+* ``cartoDarkMatter``
+* ``cartoDarkMatterBlank`` - No labels
 
 ``<tile-layer>`` also supports the ``opacity`` attribute, in order to overlay basemaps on top of each other.
 
