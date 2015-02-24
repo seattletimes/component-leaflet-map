@@ -59,7 +59,7 @@ module.exports = function(element) {
           for (var color in map) {
             var range = map[color];
             if (value >= range.min && value <= range.max) {
-              styleCopy.color = color;
+              styleCopy.fillColor = color;
             }
           }
           return styleCopy;
