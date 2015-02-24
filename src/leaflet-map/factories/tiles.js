@@ -22,6 +22,7 @@ module.exports = function(map, config) {
   });
   //add layers to map
   layers.forEach(function(tile) {
+    if (!tile) return;
     tile.addTo(map);
   });
 };
