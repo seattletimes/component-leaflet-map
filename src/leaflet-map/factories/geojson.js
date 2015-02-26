@@ -16,6 +16,7 @@ module.exports = function(map, config) {
           data = JSON.parse(response);
           var layer = L.geoJson(data, config);
           layer.addTo(map);
+          layer.bringToBack();
         } catch (e) {
           console.error("Unable to parse GeoJSON from " + json.src);
         }

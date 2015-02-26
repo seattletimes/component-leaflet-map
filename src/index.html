@@ -51,5 +51,18 @@ Hello, Seattle!
       </geo-json>
     </leaflet-map>
     <script src="leaflet-map.js"></script>
+    <script>
+var mapElement = document.querySelector("leaflet-map");
+var map = mapElement.map;
+var L = mapElement.leaflet;
+
+//this marker must end up over top of the AJAX-loaded GeoJSON
+var marker = L.marker([40,-100], {
+  icon: L.divIcon({
+    className: "test"
+  })
+});
+marker.addTo(map);
+    </script>
   </body>
 </html>
