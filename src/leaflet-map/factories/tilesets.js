@@ -1,11 +1,11 @@
 var stamenAttrib = [
-  'Map tiles by <a href="http://stamen.com/">Stamen Design</a>, ',
-  'under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. ',
-  'Data by <a href="http://openstreetmap.org/">OpenStreetMap</a>, ',
-  'under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.'
+  'Map tiles by <a href="http://stamen.com/" target="_top">Stamen Design</a>, ',
+  'under <a href="http://creativecommons.org/licenses/by/3.0" target="_top">CC BY 3.0</a>. ',
+  'Data by <a href="http://openstreetmap.org/" target="_top">OpenStreetMap</a>, ',
+  'under <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">CC BY SA</a>.'
 ].join("");
 
-var cartoAttrib = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
+var cartoAttrib = '&copy; <a href="http://www.openstreetmap.org/copyright" target="_top">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions" target="_top">CartoDB</a>';
 
 module.exports = {
   // STAMEN
