@@ -1,6 +1,7 @@
 var less = require("less");
 var path = require("path");
 var through = require("through2");
+var NpmImport = require("less-plugin-npm-import");
 
 var _ = function(tmp) {
   return tmp.toString().replace(/^.*\/\*\n*\s*|\*\/\}$/gm, "");
@@ -22,8 +23,12 @@ module.exports = function(file) {
       done();
     }, function(done) {
       var self = this;
-      var dir = path.dirname(file);
-      less.render(buffer, { paths: [dir] }, function(err, result) {
+      var options = {
+        paths: [ path.dirname(file) ],
+        plugins: [ new NpmImport() ]
+      };
+
+      less.render(buffer, options, function(err, result) {
         if (err) {
           console.error(err);
           return done();
