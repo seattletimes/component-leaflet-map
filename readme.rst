@@ -8,12 +8,12 @@ A custom element for instantiating Leaflet maps and feeding them data. When fini
       <map-marker lat="23" lng="-80">Popup text!</map-marker>
       <geo-json src="url.geojson">
         <geo-data>OR GEOJSON DATA GOES HERE</geo-data>
-        <geo-palette on="FEATURE_PROPERTY">
+        <geo-palette property="FEATURE_PROPERTY">
           <color-mapping max=128 color="red"></color-mapping>
           <color-mapping min=129 max=255 color="blue"></color-mapping>
         </geo-palette>
         <geo-style>
-    { "stroke": false, "fillOpacity": .6 }
+    { "stroke": false, "fillOpacity": 0.6 }
         </geo-style>
         <geo-popup>
     I'm templated, with values from {{FEATURE_PROPERTY}} injected automatically!
@@ -86,7 +86,7 @@ Set the position of the map marker using the ``lat`` and ``lng`` attributes. Any
 
 The most complicated element, ``<geo-json>`` uses several sub-elements to load and annotate GeoJSON files. You can provide the GeoJSON directly, using a ``<geo-data>`` element (this is the template's default) or load it via AJAX by specifying a ``src`` attribute on the ``<geo-json>``.
 
-The ``<geo-style>`` element should contain strict JSON matching Leaflet's `path style options <http://leafletjs.com/reference.html#path>`__. These styles will be overridden/supplemented by any coloring specified in the ``<geo-palette>`` element, which is keyed via the ``property`` attribute to the properties hash on each GeoJSON feature.
+The ``<geo-style>`` element should contain strict JSON (e.g. all decimals should have leading zeros, property names should be double quoted, etc.) matching Leaflet's `path style options <http://leafletjs.com/reference.html#path>`__. These styles will be overridden/supplemented by any coloring specified in the ``<geo-palette>`` element, which is keyed via the ``property`` attribute to the properties hash on each GeoJSON feature.
 
 ``<geo-popup>`` allows you to bind HTML to the GeoJSON layer with some very simple templating, substituting in any property from the feature. Loops, conditionals, and formatting are not supported yet, so make sure your GeoJSON contains properly-formatted data to be used in the popup.
 
