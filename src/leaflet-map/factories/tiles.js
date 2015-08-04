@@ -1,13 +1,13 @@
 var tilesets = require("./tilesets");
 var L = require("leaflet");
 
-module.exports = function(map, config) {
+module.exports = function(map, config, element) {
   //if no tiles, set the toner
   if (!config.tiles || !config.tiles.length) {
     config.tiles = [{ layer: "toner" }];
   }
   //convert tiles into layers
-  var layers = config.tiles.map(function(setup) {
+  var layers = config.tiles.forEach(function(setup) {
     setup.options = setup.options || {};
     if (setup.layer && setup.layer in tilesets) {
       //discard and create one from the layer
@@ -18,11 +18,11 @@ module.exports = function(map, config) {
       }
     }
     if (!setup.url) return undefined;
-    return L.tileLayer(setup.url, setup.options);
-  });
-  //add layers to map
-  layers.forEach(function(tile) {
-    if (!tile) return;
-    tile.addTo(map);
+    var layer = L.tileLayer(setup.url, setup.options);
+    //make these available in the element lookup for later
+    if (setup.id) {
+      element.lookup[setup.id] = layer;
+    }
+    layer.addTo(map);
   });
 };

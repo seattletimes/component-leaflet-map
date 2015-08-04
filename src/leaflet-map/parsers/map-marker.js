@@ -4,6 +4,7 @@ module.exports = function(element) {
     latlng: [element.getAttribute("lat"), element.getAttribute("lng")].map(Number),
     style: element.getAttribute("style"),
     class: element.className,
-    title: element.getAttribute("title")
+    title: element.getAttribute("title"),
+    id: element.getAttribute("id")
   });
 };

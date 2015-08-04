@@ -9,7 +9,8 @@ module.exports = function(element) {
       return;
     }
     var json = {
-      data: src
+      data: src,
+      id: element.getAttribute("id")
     };
     this.geojson.push(json);
   } else {
@@ -88,7 +89,8 @@ module.exports = function(element) {
       src: url,
       data: data,
       style: style,
-      eachFeature: popup
+      eachFeature: popup,
+      id: element.getAttribute("id")
     });
   }
 };

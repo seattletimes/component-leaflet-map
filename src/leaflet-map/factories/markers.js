@@ -1,6 +1,6 @@
 var L = require("leaflet");
 
-module.exports = function(map, config) {
+module.exports = function(map, config, element) {
 
   config.markers.forEach(function(poi) {
     var options = {
@@ -13,6 +13,9 @@ module.exports = function(map, config) {
     var marker = L.marker(poi.latlng, options);
     if (poi.html) {
       marker.bindPopup(poi.html);
+    }
+    if (poi.id) {
+      element.lookup[poi.id] = marker;
     }
     marker.addTo(map);
   });

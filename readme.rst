@@ -5,7 +5,7 @@ A custom element for instantiating Leaflet maps and feeding them data. When fini
 
     <leaflet-map lat="47" lng="-122" zoom=5>
       <tile-layer layer="stamen-toner"></tile-layer>
-      <map-marker lat="23" lng="-80">Popup text!</map-marker>
+      <map-marker lat="23" lng="-80" id="findMe">Popup text!</map-marker>
       <geo-json src="url.geojson">
         <geo-data>OR GEOJSON DATA GOES HERE</geo-data>
         <geo-palette property="FEATURE_PROPERTY">
@@ -23,7 +23,9 @@ A custom element for instantiating Leaflet maps and feeding them data. When fini
 
 GeoJSON represents the most significant portion of ``<leaflet-map>`` development, with the ability to automatically color and bind popups to the vector layer. The templating for popups is extremely primitive and only supports direct string value substitution (no loops, no expressions, no formatters), but this covers most of the required cases and provides predictable results for users. More advanced users will probably want to go through the ``map`` and ``leaflet`` properties exposed on the element anyway.
 
-``<leaflet-map>`` is built on top of our `component template <https://github.com/seattletimes/component-template>`__.
+Any elements with an ID will be made available after instantiation on the element's ``lookup`` property. For example, in the code above, we could manipulate the map marker via ``document.querySelector("leaflet-map").lookup.findMe``. Tile layers and GeoJSON layers are also available for manipulation this way.
+
+``<leaflet-map>`` is built on top of our `component template <https://github.com/seattletimes/component-template>`_.
 
 Elements
 ========
@@ -86,14 +88,14 @@ Set the position of the map marker using the ``lat`` and ``lng`` attributes. Any
 
 The most complicated element, ``<geo-json>`` uses several sub-elements to load and annotate GeoJSON files. You can provide the GeoJSON directly, using a ``<geo-data>`` element (this is the template's default) or load it via AJAX by specifying a ``src`` attribute on the ``<geo-json>``.
 
-The ``<geo-style>`` element should contain strict JSON (e.g. all decimals should have leading zeros, property names should be double quoted, etc.) matching Leaflet's `path style options <http://leafletjs.com/reference.html#path>`__. These styles will be overridden/supplemented by any coloring specified in the ``<geo-palette>`` element, which is keyed via the ``property`` attribute to the properties hash on each GeoJSON feature.
+The ``<geo-style>`` element should contain strict JSON (e.g. all decimals should have leading zeros, property names should be double quoted, etc.) matching Leaflet's `path style options <http://leafletjs.com/reference.html#path>`_. These styles will be overridden/supplemented by any coloring specified in the ``<geo-palette>`` element, which is keyed via the ``property`` attribute to the properties hash on each GeoJSON feature.
 
 ``<geo-popup>`` allows you to bind HTML to the GeoJSON layer with some very simple templating, substituting in any property from the feature. Loops, conditionals, and formatting are not supported yet, so make sure your GeoJSON contains properly-formatted data to be used in the popup.
 
 <map-options>
 -------------
 
-In addition to the options exposed as ``<leaflet-map>`` attributes, you can also set the configuration object for the map directly, by providing JSON matching the `Leaflet map options hash <http://leafletjs.com/reference.html#path>`__.
+In addition to the options exposed as ``<leaflet-map>`` attributes, you can also set the configuration object for the map directly, by providing JSON matching the `Leaflet map options hash <http://leafletjs.com/reference.html#path>`_.
 
 Behind the scenes
 =================
@@ -105,6 +107,6 @@ The element breaks down its startup process into two parts, both of which take p
 
 In the first step, the element and its contents are processed by the modules in the ``parsers`` directory. Tags inside the element are processed as a domain-specific language for various map features (they are not full-fledged custom elements). The parser modules are called with the config object as ``this`` and passed any elements inside the ``<leaflet-map>`` that match the selectors defined in ``config-parser.js``, so that they can add their results to the configuration.
 
-The map and the configuration object are then passed to the factory module, which calls individual layer factories to consume the configuration and attach their layers to the map. Factories are also passed a reference to the custom element, but it's not expected that they'll use it.
+The map and the configuration object are then passed to the factory module, which calls individual layer factories to consume the configuration and attach their layers to the map. Factories are also passed a reference to the custom element, so that they can perform any higher-level manipulation (such as attaching references to its ``lookup`` property when a layer has an ID attribute).
 
 At the end of startup, the ``<leaflet-map>`` element will also have two properties available for consumption by external scripts: ``map`` contains the Leaflet instance inside the element, and ``leaflet`` contains the actual library, in case additional layers or utility functions need to be called.

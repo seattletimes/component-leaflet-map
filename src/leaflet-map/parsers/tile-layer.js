@@ -5,6 +5,7 @@ module.exports = function(element) {
     options: {
       subdomains: element.getAttribute("subdomains"),
       opacity: element.getAttribute("opacity") || 1
-    }
+    },
+    id: element.getAttribute("id")
   });
 };

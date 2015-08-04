@@ -19,6 +19,9 @@ proto.createdCallback = function() {
   //initialize Leaflet
   var map = this.map = L.map(this, config.options);
 
+  //set up the ID mapping object for factories to use if they want
+  this.lookup = {};
+
   //initialize layers via factories
   factory.build(map, config, this);
 
