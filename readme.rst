@@ -25,6 +25,10 @@ GeoJSON represents the most significant portion of ``<leaflet-map>`` development
 
 Any elements with an ID will be made available after instantiation on the element's ``lookup`` property. For example, in the code above, we could manipulate the map marker via ``document.querySelector("leaflet-map").lookup.findMe``. Tile layers and GeoJSON layers are also available for manipulation this way.
 
+Currently, custom elements are upgraded asynchronously, which means that their contents may be momentarily visible in the DOM, especially if you have a lot of GeoJSON or configuration embedded. However, once the element has been upgraded, it will add a ``ready`` attribute for styling. The following CSS rule can be used to prevent a flash of unstyled content (FOUC)::
+
+    leaflet-map:not([ready]) { display: none }
+
 ``<leaflet-map>`` is built on top of our `component template <https://github.com/seattletimes/component-template>`_.
 
 Elements

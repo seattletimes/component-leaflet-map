@@ -13,7 +13,21 @@ leaflet-map {
     -ms-box-sizing: border-box;
     box-sizing: border-box;
   }
-
+  
   display: block;
+  
+  &:not([ready]) {
+    display: none;
+  }
+  
+  .default-map-marker {
+    background: black;
+    border: 1px solid #888;
+    border-radius: 100%;
+    width: 16px;
+    height: 16px;
+    margin-left: -8px;
+    margin-top: -8px;
+  }
 
 }
