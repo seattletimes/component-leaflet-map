@@ -39,6 +39,7 @@ module.exports = function(element) {
     config.options.scrollWheelZoom = false;
     config.options.touchZoom = false;
     config.options.zoomControl = false;
+    config.options.tap = false;
   }
   return config;
 };
