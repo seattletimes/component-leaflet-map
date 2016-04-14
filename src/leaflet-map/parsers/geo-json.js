@@ -5,12 +5,13 @@ module.exports = function(element) {
     try {
       src = JSON.parse(src);
     } catch (e) {
-      console.warn("Error parsing GeoJSON:", src);
-      return;
+      if (src.length) console.warn("Error parsing GeoJSON:", src);
+      src = null;
     }
     var json = {
       data: src,
-      id: element.getAttribute("id")
+      id: element.getAttribute("id"),
+      src: element.getAttribute("src")
     };
     this.geojson.push(json);
   } else {
