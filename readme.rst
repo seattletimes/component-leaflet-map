@@ -42,8 +42,8 @@ The ``<leaflet-map>`` element itself exposes several configuration properties vi
 * ``zoom``
 * ``fixed`` - disables zoom and pan functionality
 
-<tile-layer>
-------------
+\<tile-layer\>
+--------------
 
 Tile layers can be initialized in two ways. You can set them up manually, by providing the ``url`` and ``subdomains`` attributes, or you can set ``layer`` to one of the following values in order to use a preset basemap. Many of the ``esri`` layers come in two parts: one for the background, and one for the labels, which makes it easier to create maps without distracting text details when adding data.
 
@@ -75,8 +75,8 @@ Tile layers can be initialized in two ways. You can set them up manually, by pro
 
 ``<tile-layer>`` also supports the ``opacity`` attribute, in order to overlay basemaps on top of each other.
 
-<map-marker>
-------------
+\<map-marker\>
+--------------
 
 Set the position of the map marker using the ``lat`` and ``lng`` attributes. Any classes on the ``<map-marker>`` element will be set on the resulting Leaflet DivIcon marker. Content inside a ``<map-marker>`` is bound to its popup. This makes these elements combine powerfully with EJS template loops, like so::
 
@@ -87,8 +87,8 @@ Set the position of the map marker using the ``lat`` and ``lng`` attributes. Any
       </map-marker>
     <% }); %>
 
-<geo-json>
-----------
+\<geo-json\>
+------------
 
 The most complicated element, ``<geo-json>`` uses several sub-elements to load and annotate GeoJSON files. You can provide the GeoJSON directly, using a ``<geo-data>`` element (this is the template's default) or load it via AJAX by specifying a ``src`` attribute on the ``<geo-json>``.
 
@@ -96,8 +96,8 @@ The ``<geo-style>`` element should contain strict JSON (e.g. all decimals should
 
 ``<geo-popup>`` allows you to bind HTML to the GeoJSON layer with some very simple templating, substituting in any property from the feature. Loops, conditionals, and formatting are not supported yet, so make sure your GeoJSON contains properly-formatted data to be used in the popup.
 
-<map-options>
--------------
+\<map-options\>
+---------------
 
 In addition to the options exposed as ``<leaflet-map>`` attributes, you can also set the configuration object for the map directly, by providing JSON matching the `Leaflet map options hash <http://leafletjs.com/reference.html#path>`_.
 
