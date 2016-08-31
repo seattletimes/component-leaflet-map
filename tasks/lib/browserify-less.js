@@ -19,7 +19,7 @@ var npmImporter = {
       file = file.replace("npm://", "");
       var resolved = resolve(file, {
         extensions: [".less", ".css"],
-        packageFilter: function(package) { 
+        packageFilter: function(package) {
           if (package.style) package.main = package.style;
           return info;
         }
@@ -48,7 +48,7 @@ var lessTemplate = function() {/*
 var style = document.createElement("style");
 style.setAttribute("less", "{{file}}");
 style.innerHTML = {{content}};
-document.head.appendChild(style);
+document.head.insertBefore(style, document.head.firstElementChild);
 */};
 
 module.exports = function(file) {
