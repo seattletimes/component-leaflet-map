@@ -12,7 +12,7 @@
     "component-responsive-frame": "^1.1.2",
     "document-register-element": "^1.0.8",
     "dot": "^1.0.2",
-    "leaflet": "^0.7.3",
+    "leaflet": "^1.0.2",
     "less": "^2.0.0",
     "resolve": "^1.1.6"
   },
