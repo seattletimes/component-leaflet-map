@@ -3,3 +3,4 @@ build/
 temp/
 src/lib/
 auth.json
+package-lock.json
