@@ -1,14 +1,14 @@
 var stamenAttrib = [
-  'Map tiles by <a href="http://stamen.com/" target="_top">Stamen Design</a>, ',
-  'under <a href="http://creativecommons.org/licenses/by/3.0" target="_top">CC BY 3.0</a>. ',
-  'Data by <a href="http://openstreetmap.org/" target="_top">OpenStreetMap</a>, ',
-  'under <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_top">CC BY SA</a>.'
+  'Map tiles by <a href="https://stamen.com/" target="_top">Stamen Design</a>, ',
+  'under <a href="https://creativecommons.org/licenses/by/3.0" target="_top">CC BY 3.0</a>. ',
+  'Data by <a href="https://openstreetmap.org/" target="_top">OpenStreetMap</a>, ',
+  'under <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_top">CC BY SA</a>.'
 ].join("");
 
-var cartoAttrib = '&copy; <a href="http://www.openstreetmap.org/copyright" target="_top">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions" target="_top">CartoDB</a>';
+var cartoAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_top">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attribution/" target="_top">CartoDB</a>';
 
 module.exports = {
-  // STAMEN
+  // STAMEN (no https tiles available as of 2018-06-06)
   lite: {
     url: "http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png",
     options: {
@@ -46,7 +46,7 @@ module.exports = {
   },
   // ESRI
   esriStreets: {
-    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 19,
@@ -55,7 +55,7 @@ module.exports = {
     }
   },
   esriTopographic: {
-    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 19,
@@ -64,7 +64,7 @@ module.exports = {
     }
   },
   esriOceans: {
-    url: "//{s}.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 16,
@@ -73,7 +73,7 @@ module.exports = {
     }
   },
   esriOceansLabels: {
-    url: "//{s}.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Reference/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Reference/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 16,
@@ -81,7 +81,7 @@ module.exports = {
     }
   },
   esriNationalGeographic: {
-    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 16,
@@ -90,7 +90,7 @@ module.exports = {
     }
   },
   esriDarkGray: {
-    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 16,
@@ -99,7 +99,7 @@ module.exports = {
     }
   },
   esriDarkGrayLabels: {
-    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 16,
@@ -107,7 +107,7 @@ module.exports = {
     }
   },
   esriGray: {
-    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 16,
@@ -116,7 +116,7 @@ module.exports = {
     }
   },
   esriGrayLabels: {
-    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 16,
@@ -124,7 +124,7 @@ module.exports = {
     }
   },
   esriImagery: {
-    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 19,
@@ -133,7 +133,7 @@ module.exports = {
     }
   },
   esriImageryLabels: {
-    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 19,
@@ -141,7 +141,7 @@ module.exports = {
     }
   },
   esriImageryTransportation: {
-    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 19,
@@ -149,7 +149,7 @@ module.exports = {
     }
   },
   esriShadedRelief: {
-    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 13,
@@ -158,7 +158,7 @@ module.exports = {
     }
   },
   esriShadedReliefLabels: {
-    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 12,
@@ -166,7 +166,7 @@ module.exports = {
     }
   },
   esriTerrain: {
-    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 13,
@@ -175,7 +175,7 @@ module.exports = {
     }
   },
   esriTerrainLabels: {
-    url: "//{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Reference_Overlay/MapServer/tile/{z}/{y}/{x}",
+    url: "https://{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Reference_Overlay/MapServer/tile/{z}/{y}/{x}",
     options: {
       minZoom: 1,
       maxZoom: 13,
@@ -184,28 +184,28 @@ module.exports = {
   },
   // CARTODB
   cartoPositron: {
-    url: "http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+    url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     options: {
       subdomains: "abc",
       attribution: cartoAttrib
     }
   },
   cartoPositronBlank: {
-    url: "http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
+    url: "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
     options: {
       subdomains: "abc",
       attribution: cartoAttrib
     }
   },
   cartoDarkMatter: {
-    url: "http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+    url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
     options: {
       subdomains: "abc",
       attribution: cartoAttrib
     }
   },
   cartoDarkMatterBlank: {
-    url: "http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+    url: "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
     options: {
       subdomains: "abc",
       attribution: cartoAttrib
