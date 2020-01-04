@@ -1,7 +1,7 @@
 {
   "name": "component-leaflet-map",
   "description": "A reusable DSL for creating maps with Leaflet",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "author": "Thomas Wilburn",
   "repository": {
     "type": "git",
