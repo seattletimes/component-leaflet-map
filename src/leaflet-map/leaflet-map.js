@@ -1,4 +1,5 @@
-require("document-register-element");
+require("core-js/es/reflect");
+require('@webcomponents/custom-elements');
 var L = require("leaflet");
 var configParser = require("./config-parser");
 var factory = require("./factory");
@@ -6,9 +7,15 @@ var factory = require("./factory");
 //styles
 require("./leaflet-map.less");
 
-var proto = Object.create(HTMLElement.prototype);
+function LeafletMap() {
+    return Reflect.construct(HTMLElement, [], this.constructor);
+}
 
-proto.createdCallback = function() {
+LeafletMap.prototype = Object.create(HTMLElement.prototype);
+LeafletMap.prototype.constructor = LeafletMap;
+Object.setPrototypeOf(LeafletMap, HTMLElement);
+
+LeafletMap.prototype.connectedCallback = function() {
   //read configuration from the element and its contents
   var config = configParser(this);
 
@@ -25,8 +32,9 @@ proto.createdCallback = function() {
   //initialize layers via factories
   factory.build(map, config, this);
 
-};
-proto.leaflet = L;
-proto.map = null;
+}
 
-document.registerElement("leaflet-map", { prototype: proto });
+LeafletMap.prototype.leaflet = L;
+LeafletMap.prototype.map = null;
+
+customElements.define("leaflet-map", LeafletMap);
