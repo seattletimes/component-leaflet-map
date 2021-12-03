@@ -1,4 +1,4 @@
-require("core-js/es/reflect");
+require("core-js/es6/reflect");
 require('@webcomponents/custom-elements');
 var L = require("leaflet");
 var configParser = require("./config-parser");
